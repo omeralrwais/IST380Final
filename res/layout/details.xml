@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+   
+        
+ 
+    <TextView
+        android:id="@+id/erName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="7dip"
+        android:layout_centerVertical="true"
+        android:paddingBottom ="10dip"
+        android:text="San Antonio Community Hospital"
+        android:textColor="#040404"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+ 
+    <TextView
+        android:id="@+id/waitTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/erName"
+        android:layout_alignLeft="@+id/erName"
+        android:paddingTop="6dip"
+        android:layout_centerHorizontal="true"
+        android:text="Waiting time 15 min."
+        android:textColor="#343434"
+        android:textSize="14sp" />
+        
+ 
+        
+     <TextView
+        android:id="@+id/expectedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/erName"
+        android:layout_toRightOf="@+id/waitTime"
+        android:paddingTop="6dip"
+        android:layout_centerHorizontal="true"
+        android:text="  ( 45 min. with driving )"
+        android:textColor="#343434"
+        android:textSize="14sp" />
+     
+
+
+</RelativeLayout>
+        
+         <!--   <Button
+        android:id="@+id/dir"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="150dip"
+        android:layout_height="30dip"
+        android:layout_alignParentBottom="true"
+        android:textColor="#ffffff"
+        android:background="@drawable/layer_list"
+        android:layout_marginTop="10dp"
+        android:text="Get driving directions" />-->
+
+        <TextView
+            android:id="@+id/hospitalinformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:background="@drawable/list_selector"
+            android:text="Address: 5000 SAN Bernardino St, City: Los Angeles, Zib: 91730, Phone: 9094568324"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="93dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.39" />
+
+        <WebView
+            android:id="@+id/dir"
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.61" />
+    
+    </LinearLayout>
