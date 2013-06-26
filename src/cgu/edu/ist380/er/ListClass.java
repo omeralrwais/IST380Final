@@ -72,7 +72,7 @@ public class ListClass extends FragmentActivity {
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
             
-            String url=  "http://134.173.236.80:6080/arcgis/rest/services/er_wait_time_socal/MapServer/1/query?where=distance%3C31&text=&objectIds=&time=&geometry="+longitude+"%2C"+latitude+"&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=Hospital_N%2CAddress_1%2CCity_1%2CState_1%2CZIP_Code%2CPhone_Numb%2CRate2%2Cdistance%2Cx%2Cy&returnGeometry=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=distance&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson"; // URL to Brian's service
+            String url=  "http://134.173.236.80:6080/arcgis/rest/services/er_wait_time_socal2/MapServer/1/query?where=distance%3C31&text=&objectIds=&time=&geometry="+longitude+"%2C"+latitude+"&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=FACILITY%2CADDRESS_1%2CCITY%2CSTATE%2CZIP_CODE%2CPhoneNumbe%2CRate2%2Cdistance%2CLONGITUDE%2CLATITUDE&returnGeometry=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=distance&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson"; // URL to Brian's service
 
             NetworkTask task = new NetworkTask(); // call service in a separate thread 
             task.execute(url);
@@ -291,16 +291,16 @@ private class NetworkTask extends AsyncTask<String, Integer, Hospital[]> {
 							Log.d("JSON", fields.getJSONObject(r-1).getJSONObject("attributes").toString());
 							
 							// format list view as  Name + wait + distance
-							String name = fields.getJSONObject(r-1).getJSONObject("attributes").getString("Hospital_N");  // get the hospital name
+							String name = fields.getJSONObject(r-1).getJSONObject("attributes").getString("FACILITY");  // get the hospital name
 							String wait = fields.getJSONObject(r-1).getJSONObject("attributes").getString("Rate2").trim(); // get waiting time
 							String distance = fields.getJSONObject(r-1).getJSONObject("attributes").getString("distance").trim(); // get distance
-							String add =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("Address_1"); // get distance
-							String city =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("City_1"); // get distance
-							String state =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("State_1"); // get distance
-							String zib = fields.getJSONObject(r-1).getJSONObject("attributes").getString("ZIP_Code"); // get distance
-							String phone = fields.getJSONObject(r-1).getJSONObject("attributes").getString("Phone_Numb"); // get distance
-							String x =  fields.getJSONObject(r-1).getJSONObject("attributes").getString("X").trim(); // get distance
-							String y =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("Y").trim(); // get distance
+							String add =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("ADDRESS_1"); // get distance
+							String city =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("CITY"); // get distance
+							String state =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("STATE"); // get distance
+							String zib = fields.getJSONObject(r-1).getJSONObject("attributes").getString("ZIP_CODE"); // get distance
+							String phone = fields.getJSONObject(r-1).getJSONObject("attributes").getString("PhoneNumbe"); // get distance
+							String x =  fields.getJSONObject(r-1).getJSONObject("attributes").getString("LONGITUDE").trim(); // get distance
+							String y =   fields.getJSONObject(r-1).getJSONObject("attributes").getString("LATITUDE").trim(); // get distance
 
 		
 							/*String name = fields.getJSONObject(i).getJSONObject("attributes").getString("Hospital_N") +"\n";  // get the hospital name
